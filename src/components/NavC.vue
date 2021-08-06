@@ -73,9 +73,9 @@ export default {
 	</div>
 </template>
 
-<!-- autocomplet for the list, recherche active-->
 <style lang="scss" scoped>
 @import "../style/app.scss";
+
 .nav {
 	display: flex;
 	justify-content: center;
@@ -86,6 +86,7 @@ export default {
 	width: 80vw;
 	border-radius: 1rem;
 	padding: 0.3rem;
+	margin-bottom: 1vh;
 
 	&__button {
 		margin: 0.3rem;

@@ -1,10 +1,10 @@
 <script lang="ts">
-import EncardPubC from '../components/EncardPubC.vue';
-import ListC from '../components/ListC.vue';
-import NavC from '../components/NavC.vue';
+import EncardPubC from "../components/EncardPubC.vue";
+import ListC from "../components/ListC.vue";
+import NavC from "../components/NavC.vue";
 
 export default {
-	name: 'List',
+	name: "List",
 	components: {
 		ListC,
 		NavC,
@@ -38,7 +38,10 @@ export default {
 
 	&__nav {
 		display: flex;
-		justify-content: space-around;
+		justify-content: center;
+		align-items: center;
+		align-self: center;
+		justify-self: stretch;
 		width: 97vw;
 		margin: 0.3rem;
 	}
