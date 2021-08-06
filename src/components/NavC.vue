@@ -1,14 +1,14 @@
 <script>
-import Autocomplete from '../components/Autocomplete';
+import Autocomplete from "../components/Autocomplete";
 // import consumers from '../assets/consumers';
-import store from '../store/index';
-import dataString from '../utils/data';
+import store from "../store/index";
+import dataString from "../utils/data";
 
 const brandsData = dataString.brands;
 
 export default {
-	name: 'NavC',
-	props: ['brandName', 'filterBy'],
+	name: "NavC",
+	props: ["brandName", "filterBy"],
 	store: store,
 	components: {
 		Autocomplete,
@@ -22,7 +22,7 @@ export default {
 		return {
 			location: `/destination/`,
 			formData: {
-				brandName: '',
+				brandName: "",
 			},
 			brandsData: [],
 		};
@@ -49,19 +49,17 @@ export default {
 
 <template>
 	<div class="nav">
-		<div class="btns">
-			<router-link to="/">
-				<button class="nav__button">
-					<img src="../assets/icone-gps.png" alt="gps" />
-				</button>
-			</router-link>
+		<router-link to="/">
+			<button class="nav__button">
+				<img src="../assets/icone-gps.png" alt="gps" />
+			</button>
+		</router-link>
 
-			<router-link to="/list">
-				<button class="nav__button">
-					<img src="../assets/icone-liste.png" alt="logo" />
-				</button>
-			</router-link>
-		</div>
+		<router-link to="/list">
+			<button class="nav__button">
+				<img src="../assets/icone-liste.png" alt="logo" />
+			</button>
+		</router-link>
 
 		<div class="autocomplete">
 			<Autocomplete
@@ -77,7 +75,7 @@ export default {
 
 <!-- autocomplet for the list, recherche active-->
 <style lang="scss" scoped>
-@import '../style/app.scss';
+@import "../style/app.scss";
 .nav {
 	display: flex;
 	justify-content: center;
