@@ -28,12 +28,10 @@ export default {
 	},
 	methods: {
 		toggleVisible() {
-			console.log("start tggl");
 			this.visible = !this.visible;
 			setTimeout(() => {
 				this.$refs.input.focus();
 			}, 50);
-			console.log("and tggl");
 		},
 
 		itemClicked(index) {
