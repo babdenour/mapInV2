@@ -26,7 +26,7 @@ export default {
 	</div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .list {
 	width: 100%;
 	height: 100%;

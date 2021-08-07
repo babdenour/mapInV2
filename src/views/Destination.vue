@@ -28,7 +28,7 @@ export default {
 	<div class="direction">
 		<encard-pub-c />
 		<div class="direction__nav">
-			<nav-c :brandName="this.$route.params.brandName" />
+			<nav-c />
 		</div>
 		<div class="direction__map">
 			<map-c :destinationBrand="this.$route.params.brandName" />

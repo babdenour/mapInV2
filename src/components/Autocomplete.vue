@@ -110,12 +110,7 @@ export default {
 				@click="toggleVisible"
 				placeholder="🔍"
 			/>
-			<div
-				class="options"
-				ref="optionsList"
-				v-if="selectedItem == null"
-				v-show="visible"
-			>
+			<div class="options" ref="optionsList" v-show="visible">
 				<ul>
 					<li
 						v-for="(match, index) in matches"
