@@ -1,6 +1,5 @@
 <script>
 import Autocomplete from "../components/Autocomplete";
-// import consumers from '../assets/consumers';
 import store from "../store/index";
 import dataString from "../utils/data";
 

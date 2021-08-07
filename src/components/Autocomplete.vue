@@ -9,8 +9,12 @@ export default {
 			type: String,
 		},
 		title: {
-			default: 'Select One...',
+			default: "Select One...",
 			type: String,
+		},
+		shouldReset: {
+			type: Boolean,
+			default: true,
 		},
 	},
 	data() {
@@ -18,16 +22,18 @@ export default {
 			itemHeight: 39,
 			selectedItem: null,
 			selected: 0,
-			query: '',
+			query: "",
 			visible: false,
 		};
 	},
 	methods: {
 		toggleVisible() {
+			console.log("start tggl");
 			this.visible = !this.visible;
 			setTimeout(() => {
 				this.$refs.input.focus();
 			}, 50);
+			console.log("and tggl");
 		},
 
 		itemClicked(index) {
@@ -42,18 +48,22 @@ export default {
 			this.selectedItem = this.matches[this.selected];
 			this.visible = false;
 			if (this.shouldReset) {
-				this.query = '';
+				this.query = "";
 				this.selected = 0;
 			}
-			this.$emit('selected', JSON.parse(JSON.stringify(this.selectedItem)));
+			this.$emit("selected", JSON.parse(JSON.stringify(this.selectedItem)));
 		},
+
+		clearInput() {},
 
 		up() {
 			if (this.selected == 0) {
 				return;
 			}
 			this.selected -= 1;
-			this.scrollToItem();
+			if (this.selected != undefined) {
+				this.scrollToItem();
+			}
 		},
 
 		down() {
@@ -61,20 +71,26 @@ export default {
 				return;
 			}
 			this.selected += 1;
-			this.scrollToItem();
+			if (this.selected != undefined) {
+				this.scrollToItem();
+			}
 		},
 
 		scrollToItem() {
-			this.$refs.optionsList.scrollTop = this.selected * this.itemHeight;
+			if (this.selected != undefined) {
+				this.$refs.optionsList.scrollTop = this.selected * this.itemHeight;
+			}
 		},
 	},
 	computed: {
 		matches() {
-			this.$emit('change', this.query);
-			if (this.query == '') {
+			this.$emit("change", this.query);
+			if (this.query == "") {
 				return [];
 			}
-			return this.items.filter(item => item.toLowerCase().includes(this.query.toLowerCase()));
+			return this.items.filter((item) =>
+				item.toLowerCase().includes(this.query.toLowerCase())
+			);
 		},
 	},
 };
@@ -82,16 +98,6 @@ export default {
 
 <template>
 	<div class="autocomplete">
-		<!-- <div
-			class="input"
-			@click="toggleVisible"
-			v-text="selectedItem ? selectedItem[filterby] : ''"
-		></div>
-
-		<div class="placeholder" v-if="selectedItem == null" v-text="title"></div>
--->
-		<button class="close" @click="selectedItem = null" v-if="selectedItem">x</button>
-
 		<div class="popover">
 			<input
 				type="text"
@@ -100,10 +106,16 @@ export default {
 				@keydown.up="up"
 				@keydown.down="down"
 				@keydown.enter="selectItem"
+				@keydown.esc="visible = false"
 				@click="toggleVisible"
 				placeholder="🔍"
 			/>
-			<div class="options" ref="optionsList" v-if="selectedItem == null">
+			<div
+				class="options"
+				ref="optionsList"
+				v-if="selectedItem == null"
+				v-show="visible"
+			>
 				<ul>
 					<li
 						v-for="(match, index) in matches"
@@ -119,7 +131,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@import '../style/app.scss';
+@import "../style/app.scss";
 
 .autocomplete {
 	width: 100%;
@@ -131,44 +143,21 @@ export default {
 	border-radius: 0.3rem;
 	padding: 0.3rem;
 	margin: 0.3rem;
+	text-align: center;
+	font-size: bold;
 }
 .close {
-	position: absolute;
-	right: 2px;
-	top: 4px;
 	background: none;
 	border: none;
 	font-size: 30px;
-	color: lightgrey;
+	color: black;
 	cursor: pointer;
 }
-.placeholder {
-	position: absolute;
-	top: 11px;
-	left: 11px;
-	font-size: 25px;
-	color: #d0d0d0;
-	pointer-events: none;
-}
-.input {
-	min-height: 50px;
-	border: 2px solid lightgray;
-	background: #fff;
-	border-radius: 3px;
-	text-align: center;
-}
-.popover input {
-	width: 95%;
-	height: 40px;
-	font-size: 16px;
-	border-radius: 3px;
-	// margin-top: 5px;
-	// padding-left: 8px;
-}
+
 .options {
-	max-height: 150px;
+	max-height: 38vh;
 	overflow-y: scroll;
-	margin-top: 5px;
+	margin-top: 1.3vh;
 }
 .options ul {
 	list-style-type: none;
@@ -187,10 +176,12 @@ export default {
 .options ul li:not(.selected):hover {
 	background: #8c8c8c;
 	color: #fff;
+	font-weight: 550;
 }
 .options ul li.selected {
-	background: #58bd4c;
-	color: #fff;
-	font-weight: 600;
+	background: $blue-background;
+	color: $red-secondary;
+	font-weight: 700;
+	border: 4px solid $red-primary;
 }
 </style>
