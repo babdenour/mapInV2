@@ -138,15 +138,12 @@ export default {
 	border-radius: 0.3rem;
 	padding: 0.3rem;
 	margin: 0.3rem;
-	text-align: center;
 	font-size: bold;
-}
-.close {
-	background: none;
-	border: none;
-	font-size: 30px;
-	color: black;
-	cursor: pointer;
+
+	& > input {
+		text-align: center;
+		width: 100%;
+	}
 }
 
 .options {
