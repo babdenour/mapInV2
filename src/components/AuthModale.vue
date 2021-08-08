@@ -99,8 +99,10 @@ select {
 	margin: 1rem;
 }
 button {
-	width: 8vw;
-	height: 5vh;
+	width: fit-content;
+	font-size: 600;
+	height: 4vh;
+	padding: 0.5vw;
 	background-color: $blue-background;
 	color: $red-primary;
 	border-radius: 0.5em;
