@@ -56,9 +56,10 @@ export default {
 		display: flex;
 		justify-content: center;
 		padding-bottom: 2vh;
+		width: 22vw;
+		margin: auto;
 
 		h1 {
-			width: 22vw;
 			background-color: $blue-background;
 			color: $red-primary;
 			border-radius: 0.5em;
