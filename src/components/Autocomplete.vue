@@ -97,6 +97,7 @@ export default {
 <template>
 	<div class="autocomplete">
 		<div class="popover">
+			<img src="../../public/magnifier.svg" alt="loupe" />
 			<input
 				type="text"
 				ref="input"
@@ -106,7 +107,7 @@ export default {
 				@keydown.enter="selectItem"
 				@keydown.esc="visible = false"
 				@click="toggleVisible"
-				placeholder="🔍"
+				placeholder="Trouve une boutique"
 			/>
 			<div class="options" ref="optionsList" v-show="visible">
 				<ul>
@@ -131,6 +132,11 @@ export default {
 	position: relative;
 }
 .popover {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+
 	height: 2.8rem;
 	border: 3px solid $red-primary;
 	border-radius: 0.3rem;
@@ -140,6 +146,11 @@ export default {
 
 	& > input {
 		width: 100%;
+	}
+
+	& > img {
+		height: 10vh;
+		width: 7vw;
 	}
 }
 

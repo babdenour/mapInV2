@@ -1,6 +1,5 @@
 <script>
 import ListItems from "../utils/list";
-import arrowDown from "../../public/down-arrow.svg";
 
 export default {
 	name: "ListC",
