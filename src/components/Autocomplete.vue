@@ -139,7 +139,6 @@ export default {
 	font-size: bold;
 
 	& > input {
-		text-align: center;
 		width: 100%;
 	}
 }
