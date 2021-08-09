@@ -56,7 +56,6 @@ export default {
 		display: flex;
 		justify-content: center;
 		padding-bottom: 2vh;
-		width: 22vw;
 		margin: auto;
 
 		h1 {
@@ -80,9 +79,11 @@ export default {
 	}
 
 	&__logo {
+		height: 35vh;
+
 		img {
-			height: 25vh;
-			width: 40vw;
+			height: 46vh;
+			width: 85vw;
 		}
 	}
 }
@@ -97,7 +98,8 @@ export default {
 	align-items: flex-start;
 }
 .bot {
-	display: flex;
-	align-items: flex-end;
+	position: fixed;
+	bottom: -7px;
+	width: 100%;
 }
 </style>
