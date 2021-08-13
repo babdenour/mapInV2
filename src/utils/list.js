@@ -69,7 +69,7 @@ const listTotal = [
 	},
 	{
 		brand: {
-			category: "Décration",
+			category: "Décoration",
 			alphabet: [
 				{ letter: "A", brands: ["Action"] },
 				{ letter: "F", brands: ["Flying Tiger Copenhagen"] },

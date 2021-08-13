@@ -36,7 +36,7 @@ export default {
 			<div class="data">
 				<label for="select">Age</label>
 				<input type="number" placeholder="age" min="10" max="100" required />
-				<label for="select">Sex</label>
+				<label for="select">Sexe</label>
 				<select v-model="selected">
 					<option disabled value="Type">Choisissez</option>
 					<option value="Mal">Mal</option>
