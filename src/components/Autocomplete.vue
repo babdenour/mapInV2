@@ -95,31 +95,33 @@ export default {
 </script>
 
 <template>
-	<div class="autocomplete">
-		<div class="popover">
-			<img src="../../public/magnifier.svg" alt="loupe" />
-			<input
-				type="text"
-				ref="input"
-				v-model="query"
-				@keydown.up="up"
-				@keydown.down="down"
-				@keydown.enter="selectItem"
-				@keydown.esc="visible = false"
-				@click="toggleVisible"
-				placeholder="Trouve une boutique"
-			/>
-			<div class="options" ref="optionsList" v-show="visible">
-				<ul>
-					<li
-						v-for="(match, index) in matches"
-						:key="index"
-						:class="{ selected: selected == index }"
-						@click="itemClicked(index)"
-						v-text="match"
-					></li>
-				</ul>
+	<div>
+		<div class="autocomplete">
+			<div class="popover">
+				<img src="../../public/magnifier.svg" alt="loupe" />
+				<input
+					type="text"
+					ref="input"
+					v-model="query"
+					@keydown.up="up"
+					@keydown.down="down"
+					@keydown.enter="selectItem"
+					@keydown.esc="visible = false"
+					@click="toggleVisible"
+					placeholder="Trouve une boutique"
+				/>
 			</div>
+		</div>
+		<div class="options" ref="optionsList" v-show="visible">
+			<ul>
+				<li
+					v-for="(match, index) in matches"
+					:key="index"
+					:class="{ selected: selected == index }"
+					@click="itemClicked(index)"
+					v-text="match"
+				></li>
+			</ul>
 		</div>
 	</div>
 </template>
@@ -129,20 +131,21 @@ export default {
 
 .autocomplete {
 	width: 100%;
-	position: relative;
+	// position: relative;
 }
+
 .popover {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-
+	// width: 35vw;
 	height: 2.8rem;
 	border: 3px solid $red-primary;
 	border-radius: 0.3rem;
 	padding: 0.3rem;
 	margin: 0.3rem;
-	font-size: bold;
+	z-index: 5;
 
 	& > input {
 		width: 100%;
@@ -156,28 +159,37 @@ export default {
 
 .options {
 	max-height: 38vh;
-	overflow-y: scroll;
+	overflow-x: scroll;
 	margin-top: 1.3vh;
+	width: 100%;
+	opacity: 1;
 }
+
 .options ul {
+	width: fit-content;
 	list-style-type: none;
 	text-align: left;
 	padding-left: 0;
 }
+
 .options ul li {
 	border-bottom: 1px solid lightgray;
 	padding: 10px;
 	cursor: pointer;
 	background: #f1f1f1;
+	font-size: bold;
 }
+
 .options ul li:first-child {
 	border-top: 2px solid #d6d6d6;
 }
+
 .options ul li:not(.selected):hover {
 	background: #8c8c8c;
 	color: #fff;
 	font-weight: 550;
 }
+
 .options ul li.selected {
 	background: $blue-background;
 	color: $red-secondary;

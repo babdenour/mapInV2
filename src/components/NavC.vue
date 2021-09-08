@@ -78,14 +78,14 @@ export default {
 .nav {
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-start;
 	align-self: center;
-	justify-self: stretch;
-	background-color: $blue-background;
+	max-height: 10vh;
 	width: 80vw;
 	border-radius: 1rem;
 	padding: 0.3rem;
 	margin-bottom: 1vh;
+	background-color: $blue-background;
 
 	&__button {
 		margin: 0.3rem;
@@ -119,6 +119,9 @@ export default {
 }
 
 .autocomplete {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
 	flex-grow: 3;
 }
 </style>
