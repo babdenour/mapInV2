@@ -49,6 +49,8 @@ export default {
 	&__list {
 		height: 50vh;
 		width: 90%;
+		z-index: 1;
+		position: relative;
 	}
 }
 </style>

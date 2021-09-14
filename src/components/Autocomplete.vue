@@ -131,7 +131,6 @@ export default {
 
 .autocomplete {
 	width: 100%;
-	// position: relative;
 }
 
 .popover {
@@ -139,7 +138,6 @@ export default {
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	// width: 35vw;
 	height: 2.8rem;
 	border: 3px solid $red-primary;
 	border-radius: 0.3rem;
@@ -158,11 +156,11 @@ export default {
 }
 
 .options {
+	z-index: 7;
 	max-height: 38vh;
 	overflow-x: scroll;
 	margin-top: 1.3vh;
 	width: 100%;
-	opacity: 1;
 }
 
 .options ul {
