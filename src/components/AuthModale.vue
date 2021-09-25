@@ -1,21 +1,34 @@
 <script>
+import axios from "axios";
+
 export default {
 	name: "Modale",
 	props: ["revele", "toggleModale"],
 
+	data() {
+		return {
+			form: {
+				age: 12,
+				gender: "",
+				email: "map@in.com",
+			},
+		};
+	},
 	methods: {
-		created() {
-			const userInfo = {
-				sex: "mal | femel",
-				age: Number,
-				email: "test@test.com",
-			};
+		submitForm() {
 			axios
-				.post("", userInfo)
-				.then((response) => (this.userInfoId = response.data.id))
+				.post("/user", this.form)
+				.then((res) => {
+					console.log("succes");
+					console.log(res);
+				})
 				.catch((error) => {
 					this.errorMessage = error.message;
 					console.error("There was an error!", error);
+				})
+				.finally(() => {
+					console.log("finaly submit Form");
+					this.goto();
 				});
 		},
 
@@ -33,19 +46,33 @@ export default {
 		<div class="modale card">
 			<div v-on:click="toggleModale" class="btn-modale btn btn-danger">X</div>
 			<h2>Informations utiles</h2>
-			<div class="data">
-				<label for="select">Age</label>
-				<input type="number" placeholder="age" min="10" max="100" required />
-				<label for="select">Sexe</label>
-				<select v-model="selected">
-					<option disabled value="Type">Choisissez</option>
-					<option value="Mal">Mal</option>
-					<option value="Femal">Femel</option>
-				</select>
-				<label for="select">Email</label>
-				<input type="email" placeholder="email" required />
-			</div>
-			<button type="submit" @click="goto">Continue</button>
+			<form v-on:submit.prevent="submitForm">
+				<div class="data">
+					<label for="select">Age</label>
+					<input
+						v-model="form.age"
+						type="number"
+						placeholder="age"
+						min="10"
+						max="100"
+						required
+					/>
+					<label for="select">Gender</label>
+					<select v-model="form.gender">
+						<option disabled value="Type">Choisissez</option>
+						<option value="Mal">Mal</option>
+						<option value="Femal">Femel</option>
+					</select>
+					<label for="select">Email</label>
+					<input
+						v-model="form.email"
+						type="email"
+						placeholder="email"
+						required
+					/>
+				</div>
+				<button type="submit">Continue</button>
+			</form>
 		</div>
 	</div>
 </template>
