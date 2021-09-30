@@ -7,29 +7,48 @@ export default {
 
 	data() {
 		return {
-			form: {
-				age: 12,
-				gender: "",
+			user: {
+				age: 21,
+				gender: "mal",
 				email: "map@in.com",
 			},
 		};
 	},
+
 	methods: {
 		submitForm() {
-			axios
-				.post("/user", this.form)
-				.then((res) => {
-					console.log("succes");
-					console.log(res);
-				})
-				.catch((error) => {
-					this.errorMessage = error.message;
-					console.error("There was an error!", error);
-				})
-				.finally(() => {
-					console.log("finaly submit Form");
-					this.goto();
-				});
+			try {
+				if (
+					this.user.age > 12 &&
+					this.user.age < 100 &&
+					this.user.email != "" &&
+					(this.user.gender == "mal" || this.user.gender == "femal")
+				) {
+					axios
+						.post("http://localhost:3000/user", this.user)
+						.then((res) => {
+							console.log("succes", res.status);
+							this.goto();
+						})
+						.catch((error) => {
+							console.error("There was an error!", error);
+						});
+				} else if (
+					this.user.age < 12 ||
+					this.user.age >= 100 ||
+					this.user.email == "" ||
+					this.user.gender == ""
+				) {
+					console.log(
+						"Error need user info: \n",
+						this.user.age,
+						this.user.email,
+						this.user.gender
+					);
+				}
+			} catch (error) {
+				error.status(400).send({ message: "ERROR" });
+			}
 		},
 
 		goto() {
@@ -50,26 +69,26 @@ export default {
 				<div class="data">
 					<label for="select">Age</label>
 					<input
-						v-model="form.age"
+						v-model="user.age"
 						type="number"
-						placeholder="age"
+						placeholder="21"
 						min="10"
-						max="100"
+						max="101"
 						required
 					/>
-					<label for="select">Gender</label>
-					<select v-model="form.gender">
-						<option disabled value="Type">Choisissez</option>
-						<option value="Mal">Mal</option>
-						<option value="Femal">Femel</option>
-					</select>
 					<label for="select">Email</label>
 					<input
-						v-model="form.email"
+						v-model="user.email"
 						type="email"
 						placeholder="email"
 						required
 					/>
+					<label for="select">Gender</label>
+					<select v-model="user.gender" required>
+						<option disabled value="Type">Choisissez</option>
+						<option value="mal">Mal</option>
+						<option value="femal">Femel</option>
+					</select>
 				</div>
 				<button type="submit">Continue</button>
 			</form>
