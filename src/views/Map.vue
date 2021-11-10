@@ -1,14 +1,23 @@
 <script>
-import MapC from '../components/MapC.vue';
-import NavC from '../components/NavC.vue';
-import EncardPubC from '../components/EncardPubC.vue';
+import MapC from "../components/MapC.vue";
+import NavC from "../components/NavC.vue";
+import EncardPubC from "../components/EncardPubC.vue";
 
 export default {
-	name: 'Map',
+	name: "Map",
 	components: {
 		MapC,
 		NavC,
 		EncardPubC,
+	},
+
+	data() {
+		return {
+			coordinates: {
+				lat: 0,
+				lng: 0,
+			},
+		};
 	},
 };
 </script>

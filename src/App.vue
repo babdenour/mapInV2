@@ -8,16 +8,14 @@
 
 <script>
 export default {
-	name: 'App',
+	name: "App",
 
-	data: () => ({
-		//
-	}),
+	data: () => ({}),
 };
 </script>
 
 <style lang="scss">
-@import './style/app.scss';
+@import "./style/app.scss";
 
 #app {
 	font-family: Avenir, Helvetica, Arial, sans-serif;

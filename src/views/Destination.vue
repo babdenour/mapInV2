@@ -25,21 +25,21 @@ export default {
 </script>
 
 <template>
-	<div class="direction">
+	<div class="destination">
 		<encard-pub-c />
-		<div class="direction__nav">
+		<div class="destination__nav">
 			<nav-c />
 		</div>
-		<div class="direction__map">
+		<div class="destination__map">
 			<map-c :destinationBrand="this.$route.params.brandName" />
 		</div>
-		<div class="direction__bottom"></div>
+		<div class="destination__bottom"></div>
 		<encard-pub-c />
 	</div>
 </template>
 
 <style lang="scss" scoped>
-.direction {
+.destination {
 	width: 100%;
 	height: 100%;
 	display: flex;

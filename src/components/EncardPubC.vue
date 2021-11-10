@@ -1,6 +1,6 @@
 <script>
 export default {
-	name: 'EncardPubC',
+	name: "EncardPubC",
 };
 </script>
 
@@ -13,7 +13,6 @@ export default {
 <style lang="scss">
 .encard {
 	width: 100%;
-	// height: 100%;
 
 	img {
 		width: 100%;
